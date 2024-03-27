@@ -3,12 +3,13 @@ package com.ngrinder.performance.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Service;
 
 import com.ngrinder.performance.domain.Notice;
 import com.ngrinder.performance.mapper.NoticeReadMapper;
 
-import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

@@ -3,9 +3,9 @@ package com.ngrinder.performance.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.ngrinder.performance.domain.Notice;
+import javax.servlet.http.HttpServletRequest;
 
-import jakarta.servlet.http.HttpServletRequest;
+import com.ngrinder.performance.domain.Notice;
 
 public interface NoticeService {
 	List<Notice> getAllNotices();
