@@ -5,7 +5,9 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ngrinder.performance.domain.Notice;
 import com.ngrinder.performance.mapper.NoticeReadMapper;
@@ -22,6 +24,8 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
+	@Cacheable(value = "NoticeReadMapper.findAll")
+	@Transactional
 	public List<Notice> getAllNotices() {
 		return noticeReadMapper.findAll();
 	}
