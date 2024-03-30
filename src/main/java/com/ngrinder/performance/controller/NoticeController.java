@@ -1,5 +1,7 @@
 package com.ngrinder.performance.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ngrinder.performance.domain.Notice;
@@ -35,4 +38,13 @@ public class NoticeController {
 		return new ResponseEntity<>(notices, HttpStatus.OK);
 	}
 
+	@GetMapping("/dates")
+	public ResponseEntity<Object> findNoticeByDates(@RequestParam("startDate") String startDate,
+		@RequestParam("endDate") String endDate) {
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		List<Notice> notices = noticeService.findNoticesByDates(LocalDateTime.parse(startDate, formatter),
+			LocalDateTime.parse(endDate, formatter));
+
+		return new ResponseEntity<>(notices, HttpStatus.OK);
+	}
 }

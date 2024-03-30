@@ -40,6 +40,6 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public List<Notice> findNoticesByDates(LocalDateTime startDate, LocalDateTime endDate) {
-		return null;
+		return noticeReadMapper.findNoticesByDates(startDate, endDate);
 	}
 }

@@ -15,4 +15,9 @@
         LIMIT #{startIdx},10;
     </select>
 
+    <select id="findNoticesByDates" resultType="com.ngrinder.performance.domain.Notice">
+        SELECT * FROM notice
+        WHERE create_date between #{startDate} AND #{endDate}
+    </select>
+
 </mapper>
